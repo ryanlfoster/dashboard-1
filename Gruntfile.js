@@ -28,5 +28,6 @@ module.exports = function(grunt) {
 
     require('load-grunt-tasks')(grunt);
 
-    grunt.registerTask('default', ['eslint', 'scsslint']);
+    grunt.registerTask('default', ['eslint']);
+    grunt.registerTask('lint', ['eslint', 'scsslint']);
 };
