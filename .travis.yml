@@ -13,4 +13,5 @@ deploy:
   organization: GitHubTeam
   space: applications
   on:
+    branch: master
     repo: reviewninja/dashboard
