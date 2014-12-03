@@ -1,0 +1,16 @@
+language: node_js
+before_script:
+- bower install
+- gem install scss-lint
+deploy:
+  edge: true
+  provider:
+    provider: cloudfoundry
+  api: https://api.run.pivotal.io
+  username: dominik.tornow@gmail.com
+  password:
+    secure: GL2dHhCksPLxaMgM5/FXnUd+p4H3iykG5wbGfnPB/yrIHK3DbVE9RGBt+S97+VqRbQwk5SMjrL15wXNb54bfQKKGaKSj8vy6gPnQGfyag2k2g5bqtd7YtBBk7gQvHHCGEdr1IUEzZ5DgrCq6296V6O3yWeahwOwPC06GACb49Zs=
+  organization: GitHubTeam
+  space: applications
+  on:
+    repo: reviewninja/dashboard
