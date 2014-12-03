@@ -1,0 +1,22 @@
+<nav class="navbar navbar-default" role="navigation">
+  <div class="navbar-header">
+    <a class="navbar-brand" href="">
+      <span class="octicon octicon-repo"></span>
+      {{ $stateParams.user }}/{{ $stateParams.repo }}
+    </a>
+  </div>
+</nav>
+
+<div class="container-fluid">
+  <div class="row">
+    <div class="col-sm-6 col-sm-offset-3">
+      <div class="center-block">
+        <img src="/assets/images/original.png" alt="Octocat" class="img-responsive center-block" />
+        <div ng-show="status">
+          <h1>{{ status.state }}</h1>
+          <p class="lead">{{ status.context }}: {{ status.description }}</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
