@@ -2,7 +2,7 @@
 // Stat Directive
 // *****************************************************
 
-module.directive('stat', ['$RAW', function($RAW) {
+module.directive('stat', ['$RAW', '$timeout', function($RAW, $timeout) {
     return {
         restrict: 'E',
         templateUrl: '/templates/stat.html',
@@ -14,9 +14,18 @@ module.directive('stat', ['$RAW', function($RAW) {
         link: function(scope, element, attr) {
             scope.$watch('url', function() {
                 if(scope.url) {
-                    scope.info = $RAW.call('stat', {
-                        url: scope.url
-                    });
+                    var refresh = function() {
+                        scope.stat = $RAW.call('stat', {
+                            url: scope.url
+                        }, function(err, stat) {
+                            if(!err) {
+                                scope.text = stat.text;
+                            }
+                        });
+
+                        $timeout(refresh, 60000);
+                    };
+                    refresh();
                 }
             });
         }

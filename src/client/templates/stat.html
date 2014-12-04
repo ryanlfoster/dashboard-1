@@ -1,2 +1,4 @@
-<span class="{{ icon || 'octicon octicon-octoface' }}" style="font-size:80px;"></span>
-<p class="lead" style="margin-bottom:0;">{{ info.value.text }}</p>
+<div class="fade" ng-class="{in: stat.loaded}">
+    <span class="{{ icon || 'octicon octicon-octoface' }}" style="font-size:80px;"></span>
+    <p class="lead" style="margin-bottom:0;">{{ text }}</p>
+</div>
