@@ -92,7 +92,7 @@ app.all('/webhook', function(req, res) {
 
     try {
         var event = req.headers['x-github-event'];
-        var room = req.args.repository.owner.login + ':' + req.args.repository.name + ':' + event;
+        var room = (req.args.repository.owner.login || req.args.repository.owner.name) + ':' + req.args.repository.name + ':' + event;
         io.emit(room, req.args);
     } catch(err) {}
 

@@ -8,6 +8,7 @@ module.directive('growl', function($timeout) {
         templateUrl: '/templates/notification.html',
         scope: {
             icon: '=',
+            delay: '=',
             title: '=',
             message: '='
 
@@ -24,7 +25,7 @@ module.directive('growl', function($timeout) {
                 type: 'notification',
                 offset: {x: 20, y: 25},
                 allow_dismiss: false,
-                delay: 1000 * 60 * 3,
+                delay: 1000 * 60 * (scope.delay || 3),
                 spacing: 15,
                 template: template,
                 animate: {

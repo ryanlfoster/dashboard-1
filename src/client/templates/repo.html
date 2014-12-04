@@ -1,6 +1,6 @@
 
 <h2 class="text-shadow fade" ng-class="{in: settings.loaded}" style="position:absolute; top:20px; left:20px; margin:0; font-weight:300;">
-  {{ $stateParams.repo }} / {{ $stateParams.user }}
+  {{ $stateParams.user }}/{{ $stateParams.repo }}
 </h2>
 
 <!-- notifications -->
@@ -8,6 +8,7 @@
        icon="notification.icon"
        title="notification.title"
        message="notification.message"
+       delay="settings.value.delay"
        style="position:absolute;">
 </growl>
 

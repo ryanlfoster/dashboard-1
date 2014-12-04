@@ -39,6 +39,18 @@ module.controller('RepoCtrl', ['$scope', '$rootScope', '$stateParams', '$RAW', '
             return match;
         };
 
+        var matchBranch = function(ref) {
+            var match = null;
+            $scope.branches.forEach(function(branch) {
+                var regex = new RegExp(branch);
+                if(regex.exec(ref)) {
+                    match = branch;
+                }
+            });
+
+            return match;
+        };
+
         //
         // Websockets
         //
@@ -55,6 +67,17 @@ module.controller('RepoCtrl', ['$scope', '$rootScope', '$stateParams', '$RAW', '
 
                 // sets body background
                 $rootScope.state = args.state;
+            }
+        });
+
+        socket.on($stateParams.user + ':' + $stateParams.repo + ':' + 'push', function(args) {
+            var branch = matchBranch(args.ref);
+            if(branch) {
+                $scope.notifications.push({
+                    icon: 'octicon octicon-git-commit',
+                    title: args.head_commit.message,
+                    message: 'new commit from ' + args.head_commit.committer.username + ' to ' + branch
+                });
             }
         });
 
@@ -79,14 +102,20 @@ module.controller('RepoCtrl', ['$scope', '$rootScope', '$stateParams', '$RAW', '
             }
         });
 
+        socket.on($stateParams.user + ':' + $stateParams.repo + ':' + 'fork', function(args) {
+            $scope.notifications.push({
+                icon: 'octicon octicon-repo-forked',
+                title: args.sender.login + ' forked your repository',
+                message: 'You now have ' + args.repository.forks + ' forks!'
+            });
+        });
+
         socket.on($stateParams.user + ':' + $stateParams.repo + ':' + 'watch', function(args) {
-            if(args.action === 'started') {
-                $scope.notifications.push({
-                    icon: 'octicon octicon octicon-star text-primary',
-                    title: args.sender.login + ' starred your repository',
-                    message: 'You now have ' + args.repository.stargazers_count + ' stars!'
-                });
-            }
+            $scope.notifications.push({
+                icon: 'octicon octicon octicon-star text-primary',
+                title: args.sender.login + ' starred your repository',
+                message: 'You now have ' + args.repository.stargazers_count + ' stars!'
+            });
         });
     }
 ]);
