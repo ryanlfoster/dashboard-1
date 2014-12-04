@@ -6,16 +6,20 @@
         <h3>Add webhook</h3>
         <p>
             In your repository add the following webhook, make sure to 
-            select "send me <strong>everything</strong>".
+            select "send me <strong>everything</strong>". Or just select
+            specific events, whatever, it's your life.
             <pre>{{ config.value.webhook }}</pre>
         </p>
 
         <h3>Include .dashboard.yml</h3>
         <p>
             In the root of your repository add a <code>.dashboard.yml</code> file.<br />
-            If no file is present default settings will be used instead.
+            If no file is present we will use default settings instead.
 <pre>
 logo: {{ config.value.github }}/:user/:repo/raw/master/logo.png
+branch:
+  - master
+  - release
 </pre>
         </p>
 

@@ -23,7 +23,7 @@ app.use(require('x-frame-options')());
 app.use(require('body-parser').json());
 
 // custom middleware
-app.use('/github/webhook', require('./middleware/param'));
+app.use('/webhook', require('./middleware/param'));
 
 async.series([
 

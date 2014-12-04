@@ -1,0 +1,19 @@
+.alert {
+  &.alert-notification {
+    background-color: #fff;
+    border: 1px solid #ccc;
+    border-left: 6px solid #ccc;
+
+    -moz-transition: top 0.5s ease-in;
+    -ms-transition: top 0.5s ease-in;
+    -o-transition: top 0.5s ease-in;
+    -webkit-transition: top 0.5s ease-in;
+    transition: top 0.5s ease-in;
+
+    width: 350px;
+
+    .lead {
+      margin-bottom: 5px;
+    }
+  }
+}

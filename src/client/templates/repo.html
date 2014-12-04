@@ -14,6 +14,14 @@
   {{ settings.error.message }}
 </div>
 
+<!-- notifications -->
+<growl ng-repeat="notification in notifications"
+       icon="notification.icon"
+       title="notification.title"
+       message="notification.message"
+       style="position:absolute;">
+</growl>
+
 <div class="container-fluid">
   <div class="row">
     <div class="col-sm-6 col-sm-offset-3" style="padding:20px 0;">
@@ -32,7 +40,10 @@
       <!-- status message -->
       <div ng-show="status" class="center-block">
         <h1>{{ status.state }}</h1>
-        <p class="lead">{{ status.context }}: {{ status.description }}</p>
+        <p class="lead">
+          {{ status.branch }}<br />
+          <small>{{ status.context }}: {{ status.description }}</small>
+        </p>
       </div>
 
     </div>

@@ -16,6 +16,9 @@ $navbar-margin-bottom: 0;
 // import bootstrap
 @import '../../../bower/bootstrap-sass-official/assets/stylesheets/bootstrap.scss';
 
+// import partials
+@import 'alert';
+
 body {
   -moz-transition: background 0.5s linear;
   -ms-transition: background 0.5s linear;

@@ -20,10 +20,11 @@ ResultSet.prototype.set = function(error, value) {
 };
 
 
-module.factory('$RAW', ['$http', function($http) {
+module.factory('$RAW', ['$http', '$log', function($http, $log) {
     return {
         call: function(method, args, callback) {
             var res = new ResultSet();
+            $log.debug('$RPC', method, args, res, res.error);
             $http.post('/' + method, args)
                 .success(function(value) {
                     res.set(null, value);
