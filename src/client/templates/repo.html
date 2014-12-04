@@ -7,16 +7,34 @@
   </div>
 </nav>
 
+<div class="alert alert-warning alert-dismissible" role="alert" ng-show="settings.error">
+  <button type="button" class="close" data-dismiss="alert">
+    <span aria-hidden="true">&times;</span><span class="sr-only">Close</span>
+  </button>
+  {{ settings.error.message }}
+</div>
+
 <div class="container-fluid">
   <div class="row">
-    <div class="col-sm-6 col-sm-offset-3">
-      <div class="center-block">
-        <img src="/assets/images/original.png" alt="Octocat" class="img-responsive center-block" style="max-width:500px" />
-        <div ng-show="status">
-          <h1>{{ status.state }}</h1>
-          <p class="lead">{{ status.context }}: {{ status.description }}</p>
-        </div>
+    <div class="col-sm-6 col-sm-offset-3" style="padding:20px 0;">
+
+      <!-- the default logo -->
+      <img src="/assets/images/original.png" 
+           ng-show="settings.loaded && !settings.value.logo" 
+           class="img-responsive center-block" 
+           style="max-width:400px" />
+
+      <!-- user specified logo -->
+      <img ng-src="{{ settings.value.logo }}" 
+           class="img-responsive center-block" 
+           style="max-width:400px" />
+
+      <!-- status message -->
+      <div ng-show="status" class="center-block">
+        <h1>{{ status.state }}</h1>
+        <p class="lead">{{ status.context }}: {{ status.description }}</p>
       </div>
+
     </div>
   </div>
 </div>

@@ -1,6 +1,11 @@
 
-module.controller('RepoCtrl', ['$scope', '$rootScope', '$stateParams', 'socket',
-    function($scope, $rootScope, $stateParams, socket) {
+module.controller('RepoCtrl', ['$scope', '$rootScope', '$stateParams', '$RAW', 'socket',
+    function($scope, $rootScope, $stateParams, $RAW, socket) {
+
+        $scope.settings = $RAW.call('settings', {
+            user: $stateParams.user,
+            repo: $stateParams.repo
+        });
 
         //
         // Websockets

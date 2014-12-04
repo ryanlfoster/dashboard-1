@@ -8,33 +8,7 @@
             see the lastest status, and much more.
         </p>
 
-        <a href="" ng-click="show=!show">
-            <span class="mega-octicon octicon-info center-block"></span>
-        </a>
-
-        <div class="well" style="margin:10px;" ng-show="show">
-            <form ng-submit="getRepo(name)">
-                <div class="form-group">
-                    <label>What is your repo?</label>
-                    <div class="input-group">
-                        <input type="text" class="form-control" placeholder="user/repo" ng-model="name">
-                        <span class="input-group-btn">
-                            <button type="submit" class="btn btn-default" type="button" style="height:34px;">Go</button>
-                        </span>
-                    </div>
-                </div>
-            </form>
-            <div ng-show="user && repo">
-                <label>You need to do the following:</label>
-                <ul>
-                    <li>navigate to your repo <a ng-href="https://github.com/{{ user }}/{{ repo }}/settings/hooks/new" target="_blank">webhooks</a></li>
-                    <li>add <em>{{ origin }}/github/webhook</em> under "payload url"</li>
-                    <li>make sure to select "send me <strong>everything</strong>"</li>
-                    <li>click "add webhook"</li>
-                </ul>
-                <label>Done that already?</label> you're all <a ng-href="/{{ user }}/{{ repo }}">good to go!</a>
-            </div>
-        </div>
+        <a ui-sref="install" class="mega-octicon octicon-info center-block"></a>
       </div>
     </div>
 </div>

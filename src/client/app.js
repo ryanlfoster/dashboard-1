@@ -24,18 +24,17 @@ module.config(['$stateProvider', '$urlRouterProvider', '$locationProvider',
 
         $stateProvider
 
-            //
-            // Home state
-            //
             .state('home', {
                 url: '/',
-                templateUrl: '/templates/home.html',
-                controller: 'HomeCtrl'
+                templateUrl: '/templates/home.html'
             })
 
-            //
-            // Repo state
-            //
+            .state('install', {
+                url: '/install',
+                templateUrl: '/templates/install.html',
+                controller: 'InstallCtrl'
+            })
+
             .state('repo', {
                 url: '/:user/:repo',
                 templateUrl: '/templates/repo.html',
