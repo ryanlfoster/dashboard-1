@@ -26,25 +26,39 @@ router.all('/settings', function(req, res) {
     var user = req.args.user;
     var repo = req.args.repo;
 
-    request(config.server.github + '/' + user + '/' + repo + '/raw/master/.dashboard.yml', function(error, response, body) {
-        var code = response.statusCode;
-
+    request.get(config.server.github + '/' + user + '/' + repo + '/raw/master/.dashboard.yml', function(error, response, body) {
+        var code = response ? response.statusCode : 500;
         if(!error && code === 200) {
-            var config = null;
+            var settings = null;
 
             try {
-                config = yaml.safeLoad(body);
+                settings = yaml.safeLoad(body);
             } catch(err) {
                 code = 500;
-                config = {message: 'unable to parse .dashboard.yml bro'};
+                settings = {message: 'unable to parse .dashboard.yml bro'};
             }
 
-            return res.status(code).send(JSON.stringify(config));
+            return res.status(code).send(JSON.stringify(settings));
         }
 
         res.status(code).send(JSON.stringify({
             message: '.dashboard.yml not found bro'
         }));
+    });
+});
+
+router.all('/stat', function(req, res) {
+    res.set('Content-Type', 'application/json');
+
+    request.get(req.args.url, function(error, response, body) {
+        var code = response ? response.statusCode : 500;
+        if(error || code !== 200) {
+            code = 200;
+            body = JSON.stringify({
+                text: 'unable to retrieve this bro'
+            });
+        }
+        return res.status(code).send(body);
     });
 });
 

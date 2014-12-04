@@ -2,7 +2,9 @@
 module.controller('RepoCtrl', ['$scope', '$rootScope', '$stateParams', '$RAW', 'socket',
     function($scope, $rootScope, $stateParams, $RAW, socket) {
 
-        var branches = ['master'];
+        $scope.stats = [];
+
+        $scope.branches = ['master'];
 
         $scope.notifications = [];
 
@@ -10,8 +12,9 @@ module.controller('RepoCtrl', ['$scope', '$rootScope', '$stateParams', '$RAW', '
             user: $stateParams.user,
             repo: $stateParams.repo
         }, function(err, settings) {
-            if(!err && settings.branches instanceof Array) {
-                branches = settings.branches;
+            if(!err) {
+                $scope.stats = settings.stats instanceof Array ? settings.stats : $scope.stats;
+                $scope.branches = settings.branches instanceof Array ? settings.branches : $scope.branches;
             }
         });
 
@@ -19,10 +22,10 @@ module.controller('RepoCtrl', ['$scope', '$rootScope', '$stateParams', '$RAW', '
         // Helper functions
         //
 
-        var hasBranch = function(_branches) {
+        var hasBranch = function(branches) {
             var match = null;
-            _branches.forEach(function(branch) {
-                if(branches.indexOf(branch.name) !== -1) {
+            branches.forEach(function(branch) {
+                if($scope.branches.indexOf(branch.name) !== -1) {
                     match = branch.name;
                 }
             });

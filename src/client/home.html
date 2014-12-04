@@ -18,7 +18,7 @@
   <link href="/assets/styles/app.css" rel="stylesheet">
 </head>
 
-<body ng-class="{'bg-success': state==='success', 'bg-warning': state==='pending', 'bg-danger': state==='failure'}">
+<body ng-class="{'bg-success': state==='success', 'bg-warning': state==='pending', 'bg-danger': state==='failure'}" class="no-select">
 
   <section ui-view></section>
 
@@ -51,6 +51,7 @@
   <script src="/directives/focus.js"></script>
   <script src="/directives/growl.js"></script>
   <script src="/directives/moment.js"></script>
+  <script src="/directives/stat.js"></script>
 
   <!-- CONTROLLERS -->
   <script src="/controller/repo.js"></script>
