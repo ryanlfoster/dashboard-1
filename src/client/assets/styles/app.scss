@@ -11,6 +11,7 @@ $border-radius-base: 0;
 $border-radius-large: 0;
 
 // navbar
+$navbar-height: 50px;
 $navbar-margin-bottom: 0;
 
 // import bootstrap
@@ -32,6 +33,7 @@ a:focus {
   text-decoration: none;
 }
 
+
 // Helper classes
 
 .center-block {
@@ -39,6 +41,21 @@ a:focus {
   margin-left: auto;
   margin-right: auto;
   text-align: center;
+}
+
+.center-vertical {
+  height: calc(100vh - 52px);
+
+  .row {
+    position: relative;
+    top: 50%;
+
+    -moz-transform: translateY(-50%);
+    -ms-transform: translateY(-50%);
+    -o-transform: translateY(-50%);
+    -webkit-transform: translateY(-50%);
+    transform: translateY(-50%);
+  }
 }
 
 .no-select {
