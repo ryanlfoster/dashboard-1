@@ -25,6 +25,7 @@ module.directive('growl', function($timeout) {
                 offset: {x: 20, y: 70},
                 allow_dismiss: false,
                 delay: 1000 * 60 * 3,
+                spacing: 15,
                 template: template,
                 animate: {
                     enter: 'animated fadeInDown',

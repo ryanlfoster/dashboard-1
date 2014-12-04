@@ -20,11 +20,11 @@ $navbar-margin-bottom: 0;
 @import 'alert';
 
 body {
-  -moz-transition: background 0.5s linear;
-  -ms-transition: background 0.5s linear;
-  -o-transition: background 0.5s linear;
-  -webkit-transition: background 0.5s linear;
-  transition: background 0.5s linear;
+  -moz-transition: background 1s linear;
+  -ms-transition: background 1s linear;
+  -o-transition: background 1s linear;
+  -webkit-transition: background 1s linear;
+  transition: background 1s linear;
 }
 
 a:hover,
