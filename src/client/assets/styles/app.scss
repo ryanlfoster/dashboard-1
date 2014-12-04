@@ -36,8 +36,34 @@ a:focus {
   text-decoration: none;
 }
 
+// Fade in
+
+.fade {
+  opacity: 0;
+
+  -moz-transition: opacity 1s ease;
+  -ms-transition: opacity 1s ease;
+  -o-transition: opacity 1s ease;
+  -webkit-transition: opacity 1s ease;
+  transition: opacity 1s ease;
+
+  -moz-transition-delay: 0.15s;
+  -ms-transition-delay: 0.15s;
+  -o-transition-delay: 0.15s;
+  -webkit-transition-delay: 0.15s;
+  transition-delay: 0.15s;
+
+  &.in {
+    opacity: 1;
+  }
+}
+
 
 // Helper classes
+
+.text-shadow {
+  text-shadow: 2px 2px 3px rgba(0, 0, 0, 0.2);
+}
 
 .center-block {
   display: block;
@@ -47,7 +73,7 @@ a:focus {
 }
 
 .center-vertical {
-  height: calc(100vh - 52px);
+  height: 100vh;
 
   .row {
     position: relative;

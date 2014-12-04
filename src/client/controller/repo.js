@@ -15,6 +15,12 @@ module.controller('RepoCtrl', ['$scope', '$rootScope', '$stateParams', '$RAW', '
             if(!err) {
                 $scope.stats = settings.stats instanceof Array ? settings.stats : $scope.stats;
                 $scope.branches = settings.branches instanceof Array ? settings.branches : $scope.branches;
+            } else {
+                $scope.notifications.push({
+                    icon: 'octicon octicon-issue-opened text-danger',
+                    title: err.message,
+                    message: 'You can read more about this in our <a href="/install">installation guide</a>'
+                });
             }
         });
 

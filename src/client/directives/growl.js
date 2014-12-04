@@ -22,7 +22,7 @@ module.directive('growl', function($timeout) {
                 message: scope.message
             },{
                 type: 'notification',
-                offset: {x: 20, y: 70},
+                offset: {x: 20, y: 25},
                 allow_dismiss: false,
                 delay: 1000 * 60 * 3,
                 spacing: 15,
