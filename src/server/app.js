@@ -89,9 +89,12 @@ async.series([
 //////////////////////////////////////////////////////////////////////////////////////////////////
 
 app.all('/webhook', function(req, res) {
-    var event = req.headers['x-github-event'];
-    var room = req.args.repository.owner.login + ':' + req.args.repository.name + ':' + event;
-    io.emit(room, req.args);
+
+    try {
+        var event = req.headers['x-github-event'];
+        var room = req.args.repository.owner.login + ':' + req.args.repository.name + ':' + event;
+        io.emit(room, req.args);
+    } catch(err) {}
 
     res.end();
 });
