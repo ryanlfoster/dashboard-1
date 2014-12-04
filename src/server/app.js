@@ -18,41 +18,14 @@ global.config = require('./../config');
 //////////////////////////////////////////////////////////////////////////////////////////////////
 
 var app = express();
-var api = {};
-var webhooks = {};
 
 app.use(require('x-frame-options')());
 app.use(require('body-parser').json());
-app.use(require('cookie-parser')());
-app.use(require('cookie-session')({
-    secret: config.server.security.sessionSecret,
-    cookie: {
-        maxAge: config.server.security.cookieMaxAge
-    }
-}));
-app.use(passport.initialize());
-app.use(passport.session());
 
 // custom middleware
 app.use('/github/webhook', require('./middleware/param'));
 
 async.series([
-
-    function(callback) {
-        console.log('checking configs'.bold);
-
-        if(config.server.http.protocol !== 'http' && config.server.http.protocol !== 'https') {
-            throw new Error('PROTOCOL must be "http" or "https"');
-        }
-
-        if(config.server.github.protocol !== 'http' && config.server.github.protocol !== 'https') {
-            throw new Error('GITHUB_PROTOCOL must be "http" or "https"');
-        }
-
-        console.log('✓ '.bold.green + 'configs seem ok');
-
-        callback();
-    },
 
     //////////////////////////////////////////////////////////////////////////////////////////////
     // Bootstrap static
@@ -115,7 +88,7 @@ async.series([
 // Handle webhook calls
 //////////////////////////////////////////////////////////////////////////////////////////////////
 
-app.all('/github/webhook', function(req, res) {
+app.all('/webhook', function(req, res) {
     var event = req.headers['x-github-event'];
     var room = req.args.repository.owner.login + ':' + req.args.repository.name + ':' + event;
     io.emit(room, req.args);

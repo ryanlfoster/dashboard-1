@@ -9,29 +9,19 @@ module.exports = {
     terms: process.env.TERMS_URL,
 
     server: {
-        github: {
-            protocol: process.env.GITHUB_PROTOCOL || 'https',
-            host: process.env.GITHUB_HOST || 'github.com',
-            api: process.env.GITHUB_API_HOST || 'api.github.com',
-            version: process.env.GITHUB_VERSION || '3.0.0',
-
-            user: process.env.GITHUB_USER,
-            pass: process.env.GITHUB_PASS
-        },
+        github: process.env.GITHUB_URL || 'https://github.com',
 
         localport: process.env.PORT || 5000,
 
         always_recompile_sass: process.env.NODE_ENV === 'production' ? false : true,
 
         http: {
-            protocol: process.env.PROTOCOL || 'https',
+            protocol: process.env.PROTOCOL,
             host: process.env.HOST,
             port: process.env.HOST_PORT
         },
 
-        https: {
-            certs: process.env.CERT
-        },
+        url: process.env.PROTOCOL + '://' + process.env.HOST + (process.env.HOST_PORT ? ':' + process.env.HOST_PORT : ''),
 
         security: {
             sessionSecret: process.env.SESSION_SECRET || 'dashboard',
