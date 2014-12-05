@@ -1,9 +1,16 @@
 [![Build Status](https://travis-ci.org/reviewninja/dashboard.svg?branch=master)](https://travis-ci.org/reviewninja/dashboard)
 
-# Dashboard
+# GitHub Dashboard
 
-A lightweight dashboard to keep an eye on the status of projects 
-on GitHub.
+A lightweight dashboard for GitHub that lets you keep tabs on events in real time.
+
+examples:
+- [ReviewNinja](http://github-dashboard.cfapps.io/reviewninja/review.ninja)
+- [GitHub Dashboard](http://github-dashboard.cfapps.io/reviewninja/dashboard)
+
+yaml examples:
+- [ReviewNinja](https://github.com/reviewninja/review.ninja/.dashboard.yml)
+- [GitHub Dashboard](https://github.com/reviewninja/dashboard/.dashboard.yml)
 
 # Setup
 
