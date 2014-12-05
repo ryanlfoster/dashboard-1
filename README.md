@@ -18,7 +18,7 @@ http://github-dashboard.cfapps.io/webhook
 
 ## Include .dashboard.yml
 
-In the root of your repository add a ```dashboard.yml``` file.
+In the root of your repository add a ```.dashboard.yml``` file.
 If no file is present, that's cool, we will use some default settings instead.
 
 ```yaml
@@ -44,7 +44,7 @@ An example payload looks like this.
 GET: http://myawesomewebservice.com/statistic
 
 {
-text: 'Everything is awesome!'
+  "text": "Everything is awesome!"
 }
 ```
 
