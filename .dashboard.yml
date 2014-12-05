@@ -1,5 +1,11 @@
-logo: http://app.review.ninja/assets/images/review-ninja-500.png
+logo: https://octodex.github.com/images/daftpunktocat-guy.gif
 branches:
   - master
   - release
-  
+stats:
+  - url: http://github-dashboard.cfapps.io/stars
+    icon: octicon octicon-star
+  - url: http://github-dashboard.cfapps.io/zen
+  - url: http://github-dashboard.cfapps.io/issues
+    icon: octicon octicon-issue-opened
+    
