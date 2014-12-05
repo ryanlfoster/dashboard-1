@@ -8,6 +8,8 @@ module.exports = {
 
     terms: process.env.TERMS_URL,
 
+    token: process.env.TOKEN,
+
     server: {
         github: process.env.GITHUB_URL || 'https://github.com',
 
