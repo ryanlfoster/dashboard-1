@@ -47,6 +47,27 @@ router.all('/settings', function(req, res) {
     });
 });
 
+router.all('/status', function(req, res) {
+    res.set('Content-Type', 'application/json');
+
+    var user = req.args.user;
+    var repo = req.args.repo;
+    var ref = req.args.ref;
+
+    request.get({
+        url: 'https://api.github.com/repos/' + user + '/' + repo + '/statuses/' + ref,
+        headers: {
+            'User-Agent': 'review-ninja',
+            'Authorization': 'token ' + config.token
+        }
+    }, function(error, response, body) {
+        if(error) {
+            return res.status(500).send(error);
+        }
+        res.send(body);
+    });
+});
+
 router.all('/stat', function(req, res) {
     res.set('Content-Type', 'application/json');
 

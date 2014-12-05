@@ -27,14 +27,14 @@
         <h1>{{ status.state }}</h1>
         <p class="lead">
           {{ status.branch }}<br />
-          <small>{{ status.context }}: {{ status.description }}</small>
+          <small>{{ status.description }}</small>
         </p>
       </div>
 
       <table class="table text-center" style="margin-top:50px;">
         <tr>
           <td ng-repeat="stat in stats" ng-style="equal">
-            <stat url="stat.url" icon="stat.icon" style="min-height:110px;"></stat>
+            <stat url="stat.url" icon="stat.icon"></stat>
           </td>
         </tr>
       </table>

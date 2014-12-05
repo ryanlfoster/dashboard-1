@@ -47,12 +47,6 @@ a:focus {
   -webkit-transition: opacity 1s ease;
   transition: opacity 1s ease;
 
-  -moz-transition-delay: 0.15s;
-  -ms-transition-delay: 0.15s;
-  -o-transition-delay: 0.15s;
-  -webkit-transition-delay: 0.15s;
-  transition-delay: 0.15s;
-
   &.in {
     opacity: 1;
   }

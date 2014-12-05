@@ -34,6 +34,22 @@ module.controller('RepoCtrl', ['$scope', '$rootScope', '$stateParams', '$RAW', '
                     delay: 0
                 });
             }
+
+            // get most recent status
+            var branch = $scope.branches[0] || 'master';
+            $RAW.call('status', {
+                user: $stateParams.user,
+                repo: $stateParams.repo,
+                ref: branch
+            }, function(err, status) {
+                if(!err && status instanceof Array && status.length) {
+                    $scope.status = status[0];
+                    $scope.status.branch = branch;
+
+                    // sets body background
+                    $rootScope.state = status[0].state;
+                }
+            });
         });
 
         //
@@ -71,12 +87,8 @@ module.controller('RepoCtrl', ['$scope', '$rootScope', '$stateParams', '$RAW', '
         socket.on($stateParams.user + ':' + $stateParams.repo + ':' + 'status', function(args) {
             var branch = hasBranch(args.branches);
             if(branch) {
-                $scope.status = {
-                    state: args.state,
-                    context: args.context,
-                    description: args.description,
-                    branch: branch
-                };
+                $scope.status = args;
+                $scope.status.branch = branch;
 
                 // sets body background
                 $rootScope.state = args.state;
