@@ -9,8 +9,8 @@ examples:
 - [GitHub Dashboard](http://github-dashboard.cfapps.io/reviewninja/dashboard)
 
 yaml examples:
-- [ReviewNinja](https://github.com/reviewninja/review.ninja/.dashboard.yml)
-- [GitHub Dashboard](https://github.com/reviewninja/dashboard/.dashboard.yml)
+- [ReviewNinja](https://github.com/reviewninja/review.ninja/blob/master/.dashboard.yml)
+- [GitHub Dashboard](https://github.com/reviewninja/dashboard/blob/master/.dashboard.yml)
 
 # Setup
 
