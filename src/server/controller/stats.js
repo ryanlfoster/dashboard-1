@@ -28,8 +28,12 @@ router.all('/zen', function(req, res) {
 
 router.all('/stars', function(req, res) {
     res.set('Content-Type', 'application/json');
+
+    var user = req.args.user;
+    var repo = req.args.repo;
+
     request.get({
-        url: 'https://api.github.com/repos/reviewninja/dashboard',
+        url: 'https://api.github.com/repos/' + user + '/' + repo,
         headers: {
             'User-Agent': 'review-ninja',
             'Authorization': 'token ' + config.token
@@ -52,8 +56,12 @@ router.all('/stars', function(req, res) {
 
 router.all('/issues', function(req, res) {
     res.set('Content-Type', 'application/json');
+
+    var user = req.args.user;
+    var repo = req.args.repo;
+
     request.get({
-        url: 'https://api.github.com/repos/reviewninja/dashboard',
+        url: 'https://api.github.com/repos/' + user + '/' + repo,
         headers: {
             'User-Agent': 'review-ninja',
             'Authorization': 'token ' + config.token
