@@ -1,4 +1,4 @@
-<div class="container-fluid center-vertical">
+<div class="container-fluid">
     <div class="row">
       <div class="col-sm-6 col-sm-offset-3" style="margin-bottom:50px">
         <h1>Install GitHub Dashboard</h1>
@@ -16,10 +16,32 @@
             In the root of your repository add a <code>.dashboard.yml</code> file.<br />
             If no file is present, that's cool, we will use some default settings instead.
 <pre>
-logo: {{ config.value.github }}/:user/:repo/raw/master/logo.png
-branch:
+logo: http://...       # url to logo image
+delay: 5               # minutes to display notifications
+branch:                # list of watched branches
   - master
   - release
+stats:                 # list of statistics
+  - url: http://...
+    icon: octicon octicon-star
+  - url: http://...
+    icon: octicon octicon-star
+</pre>
+        </p>
+
+        <h3>Statistics</h3>
+
+        <p>
+            Statistics are simple webservices that return a json object with a text value. 
+            This text will be displayed below the icon you provide, we poll these services
+            every minute to keep them up-to-date.<br />
+            An example payload looks like this.
+<pre>
+GET: http://myawesomewebservice.com/statistic
+
+{
+    text: 'Everything is awesome!'
+}
 </pre>
         </p>
 
