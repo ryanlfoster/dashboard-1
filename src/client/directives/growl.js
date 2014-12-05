@@ -15,8 +15,6 @@ module.directive('growl', function($timeout) {
         },
         link: function(scope, element, attr) {
 
-            console.log(scope.delay);
-
             var template = element[0].innerHTML;
 
             $.growl({
