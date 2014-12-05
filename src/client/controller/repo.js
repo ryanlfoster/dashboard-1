@@ -8,6 +8,8 @@ module.controller('RepoCtrl', ['$scope', '$rootScope', '$stateParams', '$RAW', '
         $scope.branches = ['master'];
         $scope.notifications = [];
 
+        $scope.equal = {width: '0%'};
+
         // get repo .dashboard.yml
         $scope.settings = $RAW.call('settings', {
             user: $stateParams.user,
@@ -17,6 +19,11 @@ module.controller('RepoCtrl', ['$scope', '$rootScope', '$stateParams', '$RAW', '
                 $scope.stats = settings.stats instanceof Array ? settings.stats : $scope.stats;
                 $scope.branches = settings.branches instanceof Array ? settings.branches : $scope.branches;
                 $scope.delay = settings.delay ? settings.delay : $scope.delay;
+
+                // equally space stats table
+                if($scope.stats && $scope.stats.length) {
+                    $scope.equal.width = (100 / $scope.stats.length) + '%';
+                }
             } else {
                 // $scope.notifications.push({
                 //     icon: 'octicon octicon-issue-opened text-danger',
