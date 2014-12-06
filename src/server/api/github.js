@@ -77,11 +77,10 @@ module.exports = {
                 status = JSON.parse(body)[0];
                 status.text = status.description;
             } catch(ex) {
-                status = {};
-                status.text = 'Unable to retrieve status bro.';
+                err = 'Unable to retrieve status bro.';
             }
 
-            done(null, status);
+            done(err, status);
         });
     }
 };

@@ -91,7 +91,11 @@ module.controller('RepoCtrl', ['$scope', '$rootScope', '$stateParams', '$RAW', '
                 $scope.status.branch = branch;
 
                 // sets body background
-                $rootScope.state = args.state;
+                $rootScope.state = null;
+                $timeout(function() {
+                    $rootScope.state = args.state;
+                    new Audio('/assets/audio/' + args.state + '.mp3').play();
+                }, 500);
             }
         });
 
