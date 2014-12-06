@@ -52,6 +52,14 @@ a:focus {
   }
 }
 
+.animate {
+  -moz-transition: margin-top 1s ease;
+  -ms-transition: margin-top 1s ease;
+  -o-transition: margin-top 1s ease;
+  -webkit-transition: margin-top 1s ease;
+  transition: margin-top 1s ease;
+}
+
 
 // Helper classes
 

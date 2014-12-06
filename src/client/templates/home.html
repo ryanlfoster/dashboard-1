@@ -1,14 +1,15 @@
-<div class="container-fluid center-vertical">
+<div class="container-fluid fade" ng-class="{in: ready}">
     <div class="row">
-      <div class="col-sm-6 col-sm-offset-3" style="margin-bottom:50px">
+      <div class="col-sm-6 col-sm-offset-3" style="padding: 50px 0">
         <img src="/assets/images/mountietocat.png" alt="Octocat" class="img-responsive center-block" style="max-width:500px" />
-        <h1 class="center-block">Welcome to the GitHub Dashboard</h1>
-        <p class="lead center-block">
-            With GitHub Dashboard you can easily keep tabs on your repo,
-            see the lastest status, and much more.
-        </p>
-
-        <a ui-sref="install" class="mega-octicon octicon-info center-block"></a>
+        <div class="animate" ng-style="style">
+            <h1 class="center-block">Welcome to the GitHub Dashboard</h1>
+            <p class="lead center-block">
+                With GitHub Dashboard you can easily keep tabs on your repo,
+                see the lastest status, and much more.
+            </p>
+            <a ui-sref="install" class="mega-octicon octicon-info center-block"></a>
+        </div>
       </div>
     </div>
 </div>

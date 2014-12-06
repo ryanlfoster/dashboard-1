@@ -20,7 +20,7 @@
 
 <body ng-class="{'bg-success': state==='success', 'bg-warning': state==='pending', 'bg-danger': state==='failure'}">
 
-  <section ui-view class="fade" ng-class="{in: true}"></section>
+  <section ui-view></section>
 
   <!-- COMPONENT SCRIPTS -->
   <script src="//cdn.socket.io/socket.io-1.2.0.js"></script>
@@ -54,6 +54,7 @@
   <script src="/directives/stat.js"></script>
 
   <!-- CONTROLLERS -->
+  <script src="/controller/home.js"></script>
   <script src="/controller/repo.js"></script>
   <script src="/controller/install.js"></script>
 

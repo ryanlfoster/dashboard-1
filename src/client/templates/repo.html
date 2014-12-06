@@ -1,5 +1,5 @@
 
-<h2 class="text-shadow fade" ng-class="{in: settings.loaded}" style="position:absolute; top:20px; left:20px; margin:0; font-weight:300;">
+<h2 class="text-shadow fade" ng-class="{in: ready}" style="position:absolute; top:20px; left:20px; margin:0; font-weight:300;">
   {{ $stateParams.user }}/{{ $stateParams.repo }}
 </h2>
 
@@ -12,14 +12,13 @@
        style="position:absolute;">
 </growl>
 
-<div class="container-fluid center-vertical no-select">
+<div class="container-fluid center-vertical no-select fade" ng-class="{in: (settings.loaded && call.loaded)}" >
   <div class="row">
     <div class="col-sm-12">
 
       <!-- the logo -->
       <img ng-src="{{ logo }}" 
-           class="img-responsive center-block fade"
-           ng-class="{in: settings.loaded}" 
+           class="img-responsive center-block"
            style="max-width:400px" />
 
       <!-- status message -->

@@ -26,7 +26,8 @@ module.config(['$stateProvider', '$urlRouterProvider', '$locationProvider',
 
             .state('home', {
                 url: '/',
-                templateUrl: '/templates/home.html'
+                templateUrl: '/templates/home.html',
+                controller: 'HomeCtrl'
             })
 
             .state('install', {

@@ -37,7 +37,7 @@ module.controller('RepoCtrl', ['$scope', '$rootScope', '$stateParams', '$RAW', '
 
             // get most recent status
             var branch = $scope.branches[0] || 'master';
-            $RAW.call('status', {
+            $scope.call = $RAW.call('status', {
                 user: $stateParams.user,
                 repo: $stateParams.repo,
                 ref: branch
@@ -152,5 +152,10 @@ module.controller('RepoCtrl', ['$scope', '$rootScope', '$stateParams', '$RAW', '
                 delay: $scope.delay
             });
         });
+
+        // for the fade in
+        $timeout(function() {
+            $scope.ready = true;
+        }, 10);
     }
 ]);
