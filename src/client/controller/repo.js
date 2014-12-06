@@ -11,7 +11,7 @@ module.controller('RepoCtrl', ['$scope', '$rootScope', '$stateParams', '$RAW', '
         $scope.equal = {width: '0%'};
 
         // get repo .dashboard.yml
-        $scope.settings = $RAW.call('settings', {
+        $scope.settings = $RAW.call('dashboard', 'settings', {
             user: $stateParams.user,
             repo: $stateParams.repo
         }, function(err, settings) {
@@ -37,17 +37,17 @@ module.controller('RepoCtrl', ['$scope', '$rootScope', '$stateParams', '$RAW', '
 
             // get most recent status
             var branch = $scope.branches[0] || 'master';
-            $scope.call = $RAW.call('status', {
+            $scope.call = $RAW.call('github', 'status', {
                 user: $stateParams.user,
                 repo: $stateParams.repo,
-                ref: branch
+                branch: branch
             }, function(err, status) {
-                if(!err && status instanceof Array && status.length) {
-                    $scope.status = status[0];
+                if(!err) {
+                    $scope.status = status;
                     $scope.status.branch = branch;
 
                     // sets body background
-                    $rootScope.state = status[0].state;
+                    $rootScope.state = status.state;
                 }
             });
         });

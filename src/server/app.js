@@ -17,12 +17,14 @@ global.config = require('./../config');
 // Express application
 //////////////////////////////////////////////////////////////////////////////////////////////////
 
+var api = {};
 var app = express();
 
 app.use(require('x-frame-options')());
 app.use(require('body-parser').json());
 
 // custom middleware
+app.use('/api', require('./middleware/param'));
 app.use('/webhook', require('./middleware/param'));
 
 async.series([
@@ -78,6 +80,27 @@ async.series([
                 callback();
             });
         }, callback);
+    },
+
+    //////////////////////////////////////////////////////////////////////////////////////////////
+    // Bootstrap api
+    //////////////////////////////////////////////////////////////////////////////////////////////
+
+    function(callback) {
+
+        console.log('bootstrap api'.bold);
+
+        async.eachSeries(config.server.api, function(p, callback) {
+            glob(p, function(err, file) {
+                if (file && file.length) {
+                    file.forEach(function(f) {
+                        console.log('✓ '.bold.green + path.relative(process.cwd(), f));
+                        api[path.basename(f, '.js')] = require(f);
+                    });
+                }
+                callback();
+            });
+        }, callback);
     }
 
 ], function(err, res) {
@@ -85,16 +108,29 @@ async.series([
 });
 
 //////////////////////////////////////////////////////////////////////////////////////////////////
+// Handle api calls
+//////////////////////////////////////////////////////////////////////////////////////////////////
+
+app.all('/api/:obj/:fun', function(req, res) {
+    res.set('Content-Type', 'application/json');
+    api[req.params.obj][req.params.fun](req, function(err, obj) {
+        if(err) {
+            return res.status(500).send(err);
+        }
+        res.send(JSON.stringify(obj));
+    });
+});
+
+//////////////////////////////////////////////////////////////////////////////////////////////////
 // Handle webhook calls
 //////////////////////////////////////////////////////////////////////////////////////////////////
 
 app.all('/webhook', function(req, res) {
-
     try {
         var event = req.headers['x-github-event'];
         var room = (req.args.repository.owner.login || req.args.repository.owner.name) + ':' + req.args.repository.name + ':' + event;
         io.emit(room, req.args);
-    } catch(err) {}
+    } catch(ex) {}
 
     res.end();
 });

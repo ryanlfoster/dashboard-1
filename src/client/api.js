@@ -22,10 +22,10 @@ ResultSet.prototype.set = function(error, value) {
 
 module.factory('$RAW', ['$http', '$log', function($http, $log) {
     return {
-        call: function(url, arg, callback) {
+        call: function(obj, fun, arg, callback) {
             var res = new ResultSet();
-            $log.debug('$RPC', url, arg, res, res.error);
-            $http.post('/' + url, arg)
+            $log.debug('$RPC', obj, fun, arg, res, res.error);
+            $http.post('/api/' + obj + '/' + fun, arg)
                 .success(function(value) {
                     res.set(null, value);
                     if(typeof callback === 'function') {

@@ -15,7 +15,7 @@ module.directive('stat', ['$RAW', '$timeout', function($RAW, $timeout) {
             scope.$watch('url', function() {
                 if(scope.url) {
                     var refresh = function() {
-                        scope.stat = $RAW.call('stat', {
+                        scope.stat = $RAW.call('dashboard', 'statistic', {
                             url: scope.url
                         }, function(err, stat) {
                             if(!err) {

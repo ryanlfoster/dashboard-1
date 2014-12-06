@@ -4,6 +4,7 @@
  * @title config
  * @overview Configuration Module
  */
+
 module.exports = {
 
     terms: process.env.TERMS_URL,
@@ -12,6 +13,8 @@ module.exports = {
 
     server: {
         github: process.env.GITHUB_URL || 'https://github.com',
+
+        github_api: process.env.GITHUB_API_URL || 'https://api.github.com',
 
         localport: process.env.PORT || 5000,
 
@@ -35,8 +38,8 @@ module.exports = {
             app: [__dirname + '/client']
         },
 
-        webhooks: [
-            __dirname + '/server/webhooks/*.js'
+        api: [
+            __dirname + '/server/api/*.js'
         ],
 
         controller: [
@@ -46,10 +49,6 @@ module.exports = {
 
         middleware: [
             __dirname + '/server/middleware/*.js'
-        ],
-
-        passport: [
-            __dirname + '/server/passports/*.js'
         ]
     }
 };
