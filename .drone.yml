@@ -1,0 +1,5 @@
+image: drone-registry.mo.sap.corp/sap_tools/ubuntu_nodejs
+script:
+  - npm install
+  - ./node_modules/bower/bin/bower install --allow-root
+  - npm test
