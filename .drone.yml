@@ -3,3 +3,13 @@ script:
   - npm install
   - ./node_modules/bower/bin/bower install --allow-root
   - npm test
+deploy:
+  cloudfoundry:
+    target: https://api.cf.sap-cf.com
+    username: $$CF_USER
+    password: $$CF_PASS
+    organization: trial
+    space: david.farr@sap.com
+    app: dashboard
+    when:
+      branch: master
