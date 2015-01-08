@@ -4,7 +4,7 @@ var express = require('express');
 var glob = require('glob');
 var merge = require('merge');
 var path = require('path');
-var sass = require('node-sass');
+var sass = require('node-sass-middleware');
 
 //////////////////////////////////////////////////////////////////////////////////////////////////
 // Load configuration
@@ -37,7 +37,7 @@ async.series([
         console.log('bootstrap static files'.bold);
 
         var publish = function(p, path) {
-            app.use(sass.middleware({
+            app.use(sass({
                 src: p,
                 dest: p,
                 outputStyle: 'compressed',
