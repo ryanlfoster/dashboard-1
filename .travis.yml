@@ -5,7 +5,7 @@ before_script:
 deploy:
   edge: true
   provider: cloudfoundry
-  api: https://api.cf.sap-cf.com
+  api: https://api.run.pivotal.io
   username: dominik.tornow@gmail.com
   password:
     secure: P6NAs3nIqJ3zSqDW3SoYu9i9sYoDgcY+zE/D7UB9JY4JIIkq+1w3maS+0sAwfjz9Ol36WycpV4fvJUwS4GePHFh0WcfGLwAbWUdLH0o6N80YQcnERzJSlYyKSwE/t2gXOwrDgUu1rj5fX9JhnUmbbpXAKH25hjlbCIWapgMddoQ=
