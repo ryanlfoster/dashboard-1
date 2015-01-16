@@ -28,6 +28,10 @@ module.exports = {
 
         url: process.env.PROTOCOL + '://' + process.env.HOST + (process.env.HOST_PORT ? ':' + process.env.HOST_PORT : ''),
 
+        https: {
+            certs: process.env.CERT
+        },
+
         security: {
             sessionSecret: process.env.SESSION_SECRET || 'dashboard',
             cookieMaxAge: 60 * 60 * 1000
