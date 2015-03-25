@@ -6,10 +6,10 @@ deploy:
   edge: true
   provider: cloudfoundry
   api: https://api.run.pivotal.io
-  username: dominik.tornow@gmail.com
+  username: tools@sap.com
   password:
-    secure: P6NAs3nIqJ3zSqDW3SoYu9i9sYoDgcY+zE/D7UB9JY4JIIkq+1w3maS+0sAwfjz9Ol36WycpV4fvJUwS4GePHFh0WcfGLwAbWUdLH0o6N80YQcnERzJSlYyKSwE/t2gXOwrDgUu1rj5fX9JhnUmbbpXAKH25hjlbCIWapgMddoQ=
-  organization: GitHubTeam
+    secure: Tllia1unc2B1FdhO2FWC/7cHbQEbE1T8jcYWqXeyIljTXK/ExOBRSC3qc2ybrLa8J3T6a4wgVEkAcKXiTOcr5GtCu2DHcF8F/XsMPt/RROxWRl9MrPDSWTEJ1dgwq/rO0jAyl3TlCDctsK5MX7fStuVWkgAcZbNUlMnbJryU7GE=
+  organization: GithubTeam
   space: applications
   on:
     repo: reviewninja/dashboard
