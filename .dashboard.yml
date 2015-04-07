@@ -3,8 +3,8 @@ branches:
   - master
   - release
 stats:
-  - url: http://github-dashboard.cfapps.io/api/github/stars?user=reviewninja&repo=dashboard
+  - url: http://www.repo-board.io/api/github/stars?user=reviewninja&repo=dashboard
     icon: octicon octicon-star
-  - url: http://github-dashboard.cfapps.io/api/github/zen
-  - url: http://github-dashboard.cfapps.io/api/github/issues?user=reviewninja&repo=dashboard
+  - url: http://www.repo-board.io/api/github/zen
+  - url: http://www.repo-board.io/api/github/issues?user=reviewninja&repo=dashboard
     icon: octicon octicon-issue-opened
