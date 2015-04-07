@@ -3,8 +3,8 @@ branches:
   - master
   - release
 stats:
-  - url: http://www.repo-board.io/api/github/stars?user=reviewninja&repo=dashboard
+  - url: http://repo-board.io/api/github/stars?user=reviewninja&repo=dashboard
     icon: octicon octicon-star
-  - url: http://www.repo-board.io/api/github/zen
-  - url: http://www.repo-board.io/api/github/issues?user=reviewninja&repo=dashboard
+  - url: http://repo-board.io/api/github/zen
+  - url: http://repo-board.io/api/github/issues?user=reviewninja&repo=dashboard
     icon: octicon octicon-issue-opened
